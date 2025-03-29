@@ -1,0 +1,30 @@
+{% extends "index.html" %}
+
+{% block content %}
+{% include "admin_navbar.html" %}
+
+<div class="container">
+    <div class="row">
+        <div style="width: 50%; margin: auto;">
+            <h3 class="text-center">Create Subject</h3>
+
+            <form method="POST" action="/create_subject">
+                <div>
+                    <label for="name" class="form-label">Subject Name</label>
+                    <input type="text" name="name" id="name" class="form-control" required>
+                </div>
+                <br>
+                <div>
+                    <label for="description" class="form-label">Description</label>
+                    <input type="text" name="description" id="description" class="form-control" required>
+                </div>
+                <br>
+                <div class="text-center">
+                    <input type="submit" value="Create Subject" class="btn btn-outline-success">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

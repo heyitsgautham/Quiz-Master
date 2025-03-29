@@ -1,0 +1,58 @@
+{% extends "index.html" %}
+
+{% block content %}
+{% include "admin_navbar.html" %}
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <h3 class="text-center">Quiz - {{ quiz.name }}</h3>
+            <h4>Questions</h4>
+
+            <div class="mb-3">
+                <a href="/view_quizzes/{{ quiz.chapter_id }}" class="btn btn-outline-primary">Back to Quizzes</a>
+            </div>
+
+            <table class="table table-hover table-bordered">
+                <thead class="table-primary">
+                    <tr class="text-center">
+                        <th>Question</th>
+                        <th>Option 1</th>
+                        <th>Option 2</th>
+                        <th>Option 3</th>
+                        <th>Option 4</th>
+                        <th>Answer</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for question in questions %}
+                    <tr>
+                        <td class="align-middle">{{ question.question_statement }}</td>
+                        <td class="align-middle">{{ question.option1 }}</td>
+                        <td class="align-middle">{{ question.option2 }}</td>
+                        <td class="align-middle">{{ question.option3 }}</td>
+                        <td class="align-middle">{{ question.option4 }}</td>
+                        <td class="align-middle">{{ question.answer }}</td>
+                        <td class="text-center">
+                            <a href="/edit_question/{{ question.id }}" class="btn btn-outline-warning">
+                                <i class="fa-solid fa-pen"></i>
+                            </a>
+                            <a href="/delete_question/{{ question.id }}" class="btn btn-outline-danger"
+                            onclick="return confirm('Are you sure you want to delete {{ question.name }}?');">
+                                <i class="fa-solid fa-trash"></i>
+                            </a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+
+            <div class="text-center">
+                <a href="/create_question/{{quiz.id}}" class="btn btn-outline-success">Create Question</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

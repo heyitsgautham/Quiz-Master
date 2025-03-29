@@ -1,0 +1,57 @@
+{% extends "index.html" %}
+
+{% block content %}
+{% include "admin_navbar.html" %}
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <h3 class="text-center">Chapter - {{ chapter.name }}</h3>
+            <h4>Quizzes</h4>
+
+            <div class="mb-3">
+                <a href="/view_chapters/{{chapter.subject_id}}" class="btn btn-outline-primary">Back to Chapters</a>
+            </div>
+
+            <table class="table table-hover table-bordered">
+                <thead class="table-primary">
+                    <tr class="text-center">
+                        <th>Quiz Name</th>
+                        <th>Date of Quiz</th>
+                        <th>Time Duration</th>
+                        <th>Remarks</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for quiz in quizzes %}
+                    <tr>
+                        <td class="align-middle">{{ quiz.name }}</td>
+                        <td class="align-middle">{{ quiz.date_of_quiz }}</td>
+                        <td class="align-middle">{{ quiz.time_duration }}</td>
+                        <td class="align-middle">{{ quiz.remarks }}</td>
+                        <td class="text-center">
+                            <a href="/view_questions/{{ quiz.id }}" class="btn btn-outline-primary">
+                                <i class="fa-solid fa-eye"></i>
+                            </a>
+                            <a href="/edit_quiz/{{ quiz.id }}" class="btn btn-outline-warning">
+                                <i class="fa-solid fa-pen"></i>
+                            </a>
+                            <a href="/delete_quiz/{{ quiz.id }}" class="btn btn-outline-danger"
+                            onclick="return confirm('Are you sure you want to delete {{ quiz.name }}?');">
+                                <i class="fa-solid fa-trash"></i>
+                            </a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+
+            <div class="text-center">
+                <a href="/create_quiz/{{chapter.id}}" class="btn btn-outline-success">Create Quiz</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
