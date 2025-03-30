@@ -34,8 +34,8 @@ Follow the instructions below to set up and run the Flask application locally.
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/yourproject.git
-   cd yourproject
+   git clone https://github.com/23f2000466/Quiz-Master
+   cd Quiz-Master/QuizMaster
    ```
 
 2. Set up a virtual environment:
