@@ -1,0 +1,46 @@
+{% extends "index.html" %}
+
+{% block content %}
+{% include "admin_navbar.html" %}
+
+<div class="container">
+    <div class="row">
+        <div style="width: 50%; margin: auto;">
+            <h2 class='text-center'> Edit Chapter </h2>
+
+            <form method="POST" action="/edit_quiz/{{quiz.id}}">
+
+                <div>
+                    <label for="name" class="form-label">Quiz Name</label>
+                    <input type="text" name="name" id="name" class="form-control" value="{{quiz.name}}" required>
+                </div>
+                <br>
+                <div>
+                    <label for="date_of_quiz" class="form-label">Date of Quiz</label>
+                    <input type="date" name="date_of_quiz" id="date_of_quiz" class="form-control"
+                        value="{{quiz.date_of_quiz}}" required>
+                </div>
+                <br>
+                <div>
+                    <label for="time_duration" class="form-label">Time Duration</label>
+                    <input type="time" name="time_duration" id="time_duration" class="form-control"
+                        value="{{quiz.time_duration}}" step="60" required>
+                </div>
+                <br>
+                <div>
+                    <label for="remarks" class="form-label">Remarks</label>
+                    <input type="text" name="remarks" id="remarks" class="form-control" value="{{quiz.remarks}}"
+                        required>
+                </div>
+                <br>
+                <div>
+                    <input type="submit" value="Edit Quiz" class="btn btn-primary">
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends "index.html" %}
+
+{% block content %}
+    <div class="d-flex justify-content-center align-items-center" style="height: 100vh;">
+        <div class="card" style="width: 22rem; padding: 20px;">
+            <h2 class="text-center">Login</h2>
+            <form method="POST" action="/login">
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" name="email" id="email" class="form-control">
+                </div>
+                <div class="form-group" style="margin-top: 10px;">
+                    <label for="password">Password</label>
+                    <input type="password" name="password" id="password" class="form-control">
+                </div>
+                <div class="form-group text-center" style="margin-top: 15px;">
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">Submit</button>
+                </div>
+            </form>
+            <p class="text-center" style="margin-top: 10px;">No account? <a href="/register">Register</a></p>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,20 @@
+<nav class="navbar navbar-dark bg-primary px-4 d-flex justify-content-between">
+  <div>
+    <a class="navbar-brand fw-bold" href="/quiz_list">Quiz Master</a>
+    <a class="navbar-brand" href="/quiz_list">Hi! {{ user.username }}</a>
+  </div>
+
+  <div>
+    <a class="btn btn-warning me-2" href="/user_history">
+      <i class="fa-solid fa-clock-rotate-left"></i> 
+    </a>
+
+    <a class="btn btn-info me-2" href="/user_dashboard">
+      <i class="fa-solid fa-chart-pie"></i> 
+    </a>
+
+    <a class="btn btn-danger" href="/logout">
+      <i class="fa-solid fa-right-from-bracket"></i>
+    </a>
+  </div>
+</nav>

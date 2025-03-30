@@ -1,0 +1,31 @@
+{% extends "index.html" %}
+
+{% block content %}
+{% include "admin_navbar.html" %}
+<div class="container">
+    <div class="row">
+        <div style="width: 50%; margin: auto;">
+            <h2 class='text-center'> Edit Chapter </h2>
+
+            <form method="POST" action="/edit_chapter/{{chapter.id}}">
+                <div>
+                    <label for="name" class="form-label">Chapter Name</label>
+                    <input type="text" name="name" id="name" class="form-control" required value="{{chapter.name}}">
+                </div>
+                <br>
+                <div>
+                    <label for="description" class="form-label">Description</label>
+                    <input type="text" name="description" id="description" class="form-control"
+                        value="{{chapter.description}}" required>
+                </div>
+                <br>
+                <div>
+                    <input type="submit" value="Edit Chapter" class="btn btn-primary">
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
