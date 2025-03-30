@@ -23,6 +23,54 @@
 
 ---
 
+# 🚀 Getting Started
+
+Follow the instructions below to set up and run the Flask application locally.
+
+## Prerequisites
+- Python 3.x installed on your system.
+
+## Installation
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/yourusername/yourproject.git
+   cd yourproject
+   ```
+
+2. Set up a virtual environment:
+   ```bash
+   python -m venv venv
+   ```
+
+3. Activate the virtual environment:
+
+   - On Windows:
+     ```bash
+     venv\Scripts\activate
+     ```
+   - On macOS/Linux:
+     ```bash
+     source venv/bin/activate
+     ```
+
+4. Install the required dependencies:
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+## Running the Application
+
+1. Start the Flask server:
+   ```bash
+   flask run
+   ```
+
+2. Access the application:  
+   Open your browser and visit: [http://127.0.0.1:5000/](http://127.0.0.1:5000/)
+
+---
+
 ## 📝 Abstract:
 This project is a multi-user application designed for **Admin** and **Users**, acting as an exam preparation platform for multiple courses. The development was structured in phases:
 
