@@ -503,33 +503,43 @@ def user_dashboard():
     user_id = session['user_id']
     user = Users.query.get(user_id)
 
-    
     all_questions = Questions.query.all()
     total_questions_dict = {}
     for question in all_questions:
         quiz_id = question.quiz_id
         total_questions_dict[quiz_id] = total_questions_dict.get(quiz_id, 0) + 1
 
-    
     user_scores = Scores.query.filter_by(user_id=user_id).all()
 
     total_score = 0
-    total_quizzes = len(user_scores)
-
+    total_quizzes = 0  
     quiz_scores = {}
+
+    quiz_totals = {}
+
     for score in user_scores:
         quiz_id = score.quiz_id
         quiz_name = score.quiz_name.name
-        total_questions = total_questions_dict.get(quiz_id, 1)  
+        total_questions = total_questions_dict.get(quiz_id, 1)
 
-        percentage_score = (score.total_scored / total_questions) * 100 if total_questions else 0
-        quiz_scores[quiz_name] = round(percentage_score, 2)
+        percentage_score = (score.total_scored / total_questions) * 100
 
-        total_score += percentage_score
+        if quiz_name not in quiz_totals:
+            quiz_totals[quiz_name] = {'total': 0, 'attempts': 0}
+        
+        quiz_totals[quiz_name]['total'] += percentage_score
+        quiz_totals[quiz_name]['attempts'] += 1
+
+    for quiz_name, data in quiz_totals.items():
+        avg_quiz_score = round(data['total'] / data['attempts'], 2)
+        quiz_scores[quiz_name] = avg_quiz_score
+        total_score += avg_quiz_score
+        total_quizzes += 1
 
     avg_score = round(total_score / total_quizzes, 2) if total_quizzes else 0
 
-    
+    print(avg_score, quiz_scores)
+
     month_wise_quizzes = {}
     for score in user_scores:
         date_obj = datetime.strptime(score.quiz_name.date_of_quiz, "%Y-%m-%d")
@@ -543,6 +553,7 @@ def user_dashboard():
         quiz_scores=quiz_scores,
         month_data=month_wise_quizzes,
     )
+
     
 @app.route('/user_history')
 def user_history():
